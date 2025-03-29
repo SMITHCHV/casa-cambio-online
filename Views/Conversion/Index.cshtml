@@ -1,24 +1,22 @@
-@model CasaCambio.Models.ConversionModel
+<h2>Casa de Cambio Online</h2>
 
-<h2>Conversión de Moneda</h2>
-
-<form asp-action="Calcular" method="post">
-    <label>Cantidad:</label>
-    <input type="number" asp-for="Cantidad" required />
-
-    <label>Moneda Origen:</label>
-    <select asp-for="MonedaOrigen">
-        <option value="BRL">Real Brasileño</option>
-        <option value="PEN">Sol Peruano</option>
-        <option value="USD">Dólar</option>
+<form method="post" action="/Conversion/RealizarCambio">
+    <label>Moneda de Origen:</label>
+    <select name="monedaOrigen" class="form-control">
+        <option value="BRL">Real Brasileño (BRL)</option>
+        <option value="PEN">Sol Peruano (PEN)</option>
+        <option value="USD">Dólar Estadounidense (USD)</option>
     </select>
 
-    <label>Moneda Destino:</label>
-    <select asp-for="MonedaDestino">
-        <option value="BRL">Real Brasileño</option>
-        <option value="PEN">Sol Peruano</option>
-        <option value="USD">Dólar</option>
+    <label>Moneda de Destino:</label>
+    <select name="monedaDestino" class="form-control">
+        <option value="BRL">Real Brasileño (BRL)</option>
+        <option value="PEN">Sol Peruano (PEN)</option>
+        <option value="USD">Dólar Estadounidense (USD)</option>
     </select>
 
-    <button type="submit">Hacer Cambio</button>
+    <label>Monto:</label>
+    <input type="number" name="monto" class="form-control" step="0.01" required />
+
+    <button type="submit" class="btn btn-primary">Hacer Cambio</button>
 </form>

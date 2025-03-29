@@ -1,31 +1,37 @@
 using Microsoft.AspNetCore.Mvc;
-using CasaCambio.Models;
 
 namespace CasaCambio.Controllers
 {
     public class ConversionController : Controller
     {
-        private static readonly Dictionary<string, decimal> TasasCambio = new()
+        private readonly Dictionary<string, decimal> tasasCambio = new()
         {
-            { "BRL-PEN", 0.75M },
-            { "BRL-USD", 0.20M },
-            { "PEN-BRL", 1.33M },
-            { "PEN-USD", 0.27M },
-            { "USD-BRL", 5.00M },
-            { "USD-PEN", 3.70M }
+            { "BRL_PEN", 0.634m },
+            { "PEN_BRL", 1.578m },
+            { "PEN_USD", 0.274m },
+            { "USD_PEN", 3.652m },
+            { "USD_BRL", 5.762m },
+            { "BRL_USD", 0.174m }
         };
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         [HttpPost]
-        public IActionResult Calcular(ConversionModel model)
+        public IActionResult RealizarCambio(string monedaOrigen, string monedaDestino, decimal monto)
         {
-            string key = $"{model.MonedaOrigen}-{model.MonedaDestino}";
-            model.TipoCambio = TasasCambio.ContainsKey(key) ? TasasCambio[key] : 1;
-            return View("Resultado", model);
+            if (monedaOrigen == monedaDestino)
+            {
+                ViewBag.Mensaje = "Las monedas de origen y destino deben ser diferentes.";
+                return View("Resultado");
+            }
+
+            string clave = monedaOrigen + "_" + monedaDestino;
+            decimal montoConvertido = tasasCambio.ContainsKey(clave) ? monto * tasasCambio[clave] : 0;
+
+            ViewBag.MonedaOrigen = monedaOrigen;
+            ViewBag.MonedaDestino = monedaDestino;
+            ViewBag.MontoIngresado = monto;
+            ViewBag.MontoConvertido = montoConvertido;
+
+            return View("Resultado");
         }
     }
 }

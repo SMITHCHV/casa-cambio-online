@@ -1,8 +1,15 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Casa de Cambio Online";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h2>Bienvenido a la Casa de Cambio</h2>
+
+<p>Selecciona una opción:</p>
+
+<a class="btn btn-primary" asp-controller="Conversion" asp-action="Index">
+    Ir a la Conversión de Moneda
+</a>
+
+<a class="btn btn-success" asp-controller="Boleta" asp-action="Generar">
+    Generar Boleta
+</a>

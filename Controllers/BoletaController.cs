@@ -5,12 +5,12 @@ namespace CasaCambio.Controllers
 {
     public class BoletaController : Controller
     {
-        public IActionResult Generar(decimal monto)
+        public IActionResult Generar(string nombre, string documento, decimal monto)
         {
             var model = new BoletaModel
             {
-                Nombre = "Usuario Ejemplo",  
-                Documento = "12345678",  
+                Nombre = nombre,
+                Documento = documento,
                 MontoRecibido = monto
             };
 

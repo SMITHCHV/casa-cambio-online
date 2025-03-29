@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "Resultado de Conversión";
+}
+
+<h2>Resultado de la Conversión</h2>
+
+<p><strong>Moneda de Origen:</strong> @ViewBag.MonedaOrigen</p>
+<p><strong>Moneda de Destino:</strong> @ViewBag.MonedaDestino</p>
+<p><strong>Monto Ingresado:</strong> @ViewBag.MontoIngresado.ToString("C")</p>
+<p><strong>Monto Convertido:</strong> @ViewBag.MontoConvertido.ToString("C")</p>
+
+<a href="/" class="btn btn-primary">Volver</a>
+<a href="/Boleta/Generar?nombre=Usuario&documento=12345678&monto=@ViewBag.MontoConvertido" class="btn btn-success">Generar Boleta</a>

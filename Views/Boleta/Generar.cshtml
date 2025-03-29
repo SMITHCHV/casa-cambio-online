@@ -1,0 +1,14 @@
+@model CasaCambio.Models.BoletaModel
+
+@{
+    ViewData["Title"] = "Boleta de Cambio";
+}
+
+<h2>Boleta de Cambio</h2>
+
+<p><strong>Nombre:</strong> @Model.Nombre</p>
+<p><strong>Documento:</strong> @Model.Documento</p>
+<p><strong>Monto Recibido:</strong> @Model.MontoRecibido.ToString("C")</p>
+<p><strong>Fecha:</strong> @Model.Fecha.ToString("dd/MM/yyyy")</p>
+
+<a href="/" class="btn btn-primary">Volver a Inicio</a>
